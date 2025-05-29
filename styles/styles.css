@@ -1,0 +1,147 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+:root {
+    color-scheme: dark;
+}
+
+
+body {
+    background-color: light-dark(rgb(200, 229, 225), rgba(0, 0, 35, 1));
+    padding: 0 10%;
+    color: light-dark(#000, #fff)
+    
+}
+
+header .container {
+    margin: 1.25rem auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: light-dark(#fff, rgba(225, 225, 225, .3));
+    padding: 0.125rem 0.625rem;
+    border-radius: 0.625rem;
+    color: light-dark(#fff, rgba(225, 225, 225, .3));
+}
+
+header .container .logo-title img {
+    width: 7.5rem;
+}
+
+header .container .light-dark button {
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.125rem;
+    background-color: lightgrey;
+    border-radius: 0.3125rem;
+}
+
+header .container .light-dark button img {
+    width: 0.9375rem;
+}
+
+main .sub-header span {
+    font-weight: bolder;
+}
+
+main .sub-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.625rem;
+    border-radius: 0.625rem;
+}
+
+main .sub-header > div {
+    display: flex;
+    align-items: center;
+    gap: 0.425rem;
+}
+
+main .sub-header > div > div {
+    border: 0.0625rem solid lightgrey;
+    background-color: light-dark(#fff, rgba(225, 225, 225, .3));
+    padding: 0.3125rem 0.625rem;
+    border-radius: 0.9375rem;
+}
+
+main .sub-header > div > div:hover {
+    background-color: orangered;
+    color: white;
+    cursor: pointer;
+}
+
+main .card-container {
+    display: flex;
+    gap: .625rem;
+    flex-wrap: wrap;
+}
+
+main .card-container .card {
+    background-color:light-dark(#fff, rgba(225, 225, 225, .3));
+    border-radius: 0.625rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0.625rem;
+    max-width: 25rem;
+    min-width: 18.75rem;
+    margin: 0 auto;
+    flex: 1 1;
+    gap: 1rem;
+    box-shadow: 0.0625rem 0.0625rem 0.1875rem grey;
+}
+
+main .card-container .card .card-content-con {
+    display: flex;
+    gap: 1rem;
+}
+
+main .card-container .card .controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+main .card-container .card .controls .active-switch {
+    background-color: lightgrey;
+    width: 2.5rem;
+    height: 1.25rem;
+    border-radius: 0.625rem;
+    position: relative;
+    padding: 0.0625rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+main .card-container .card .controls .active-switch .slider {
+    background-color: white;
+    display: block;
+    height: 1.125rem;
+    width: 1.125rem;
+    border-radius: 0.625rem;
+    float: left;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+main .card-container .card .controls > button {
+    border: 0.0625rem solid lightgrey;
+    padding: 0.3125rem;
+    border-radius: 0.9375rem;
+    cursor: pointer;
+}
+
+main .card-container .card .controls .active-switch.active {
+    background-color: orangered;
+}
+main .card-container .card .controls .active-switch.active .slider {
+    float: right;
+}
