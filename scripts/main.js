@@ -1,6 +1,5 @@
 const cardContainer = document.querySelector('.card-container');
 
-
 fetch("./data.json")
     .then(res => res.json())
     .then(data => {
@@ -10,7 +9,7 @@ fetch("./data.json")
         }
         const switches = document.querySelectorAll('.active-switch');
         switches.forEach((s) => {
-            
+
             s.addEventListener("click", (e) => {
                 flipSwitch(e)
             })
@@ -46,7 +45,19 @@ function flipSwitch(e) {
     e.target.toggleAttribute("data-isActive");
 
 }
-function propage(e) {
-    console.log(e)
-    console.log("propage test")
+
+function toggleScheme() {
+    let cScheme = document.documentElement.style.colorScheme;
+    document.documentElement.style.colorScheme = cScheme === "dark" ? "light" : "dark";
+    localStorage.setItem("theme",
+        document.documentElement.style.colorScheme
+    )
 }
+
+document.addEventListener("DOMContentLoaded",   e => {
+    const cScheme = localStorage.getItem('theme');
+    document.documentElement.style.colorScheme = cScheme === "dark" ? "dark" : "light";
+    console.log("done")
+});
+
+// Todo: filter mechanism
