@@ -10,12 +10,10 @@
     color-scheme: light;
 }
 
-
 body {
     background-color: light-dark(rgb(200, 229, 225), rgba(0, 0, 35, 1));
     padding: 0 10%;
-    color: light-dark(#000, #fff)
-    
+    color: light-dark(#000, #fff);
 }
 
 header .container {
@@ -23,10 +21,10 @@ header .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: light-dark(#fff, rgba(225, 225, 225, .3));
+    background-color: light-dark(#fff, rgba(225, 225, 225, 0.3));
     padding: 0.125rem 0.625rem;
     border-radius: 0.625rem;
-    color: light-dark(#fff, rgba(225, 225, 225, .3));
+    color: light-dark(#fff, rgba(225, 225, 225, 0.3));
 }
 
 header .container .logo-title img {
@@ -39,12 +37,28 @@ header .container .light-dark button {
     align-items: center;
     justify-content: center;
     padding: 0.125rem;
-    background-color: lightgrey;
+    background-color: light-dark(lightgrey, gray);
     border-radius: 0.3125rem;
 }
 
-header .container .light-dark button img {
+header .container .light-dark button img{
     width: 0.9375rem;
+}
+
+
+header .container .light-dark button img.dark {
+    display: block;
+}
+
+header .container .light-dark button img.light {
+    display: none;
+}
+
+header .container .light-dark button img.light.active {
+    display: block;
+}
+header .container .light-dark button img.dark.active {
+    display: none;
 }
 
 main .sub-header span {
@@ -65,14 +79,17 @@ main .sub-header > div {
     gap: 0.425rem;
 }
 
-main .sub-header > div > div {
+main .sub-header > div > a {
     border: 0.0625rem solid lightgrey;
-    background-color: light-dark(#fff, rgba(225, 225, 225, .3));
+    background-color: light-dark(#fff, rgba(225, 225, 225, 0.3));
     padding: 0.3125rem 0.625rem;
     border-radius: 0.9375rem;
+    text-decoration: none;
+    transition: background-color 200ms ease-in-out;
+    color: light-dark(#000, #fff)
 }
 
-main .sub-header > div > div:hover {
+main .sub-header > div > a:hover {
     background-color: orangered;
     color: white;
     cursor: pointer;
@@ -80,12 +97,12 @@ main .sub-header > div > div:hover {
 
 main .card-container {
     display: flex;
-    gap: .625rem;
+    gap: 0.625rem;
     flex-wrap: wrap;
 }
 
 main .card-container .card {
-    background-color:light-dark(#fff, rgba(225, 225, 225, .3));
+    background-color: light-dark(#fff, rgba(225, 225, 225, 0.3));
     border-radius: 0.625rem;
     display: flex;
     flex-direction: column;

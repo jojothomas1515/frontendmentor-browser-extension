@@ -47,17 +47,21 @@ function flipSwitch(e) {
 }
 
 function toggleScheme() {
+    let light = document.querySelector(".light");
+    let dark = document.querySelector(".dark");
     let cScheme = document.documentElement.style.colorScheme;
     document.documentElement.style.colorScheme = cScheme === "dark" ? "light" : "dark";
     localStorage.setItem("theme",
         document.documentElement.style.colorScheme
     )
+
+    light.classList.toggle("active");
+    dark.classList.toggle("active");
 }
 
-document.addEventListener("DOMContentLoaded",   e => {
+document.addEventListener("DOMContentLoaded", e => {
     const cScheme = localStorage.getItem('theme');
     document.documentElement.style.colorScheme = cScheme === "dark" ? "dark" : "light";
-    console.log("done")
 });
 
 // Todo: filter mechanism
