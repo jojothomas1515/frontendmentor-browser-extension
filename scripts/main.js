@@ -2,28 +2,19 @@ const cardContainer = document.querySelector('.card-container');
 const linkAll = document.querySelector("#filter-all");
 const linkActive = document.querySelector("#filter-active");
 const linkInactive = document.querySelector("#filter-inactive");
+let Ext;
 
 fetch("./data.json")
     .then(res => res.json())
     .then(data => {
-        let index = 0;
-        for (d of data) {
-            loadExt(d);
-        }
-        const switches = document.querySelectorAll('.active-switch');
-        switches.forEach((s) => {
-
-            s.addEventListener("click", (e) => {
-                flipSwitch(e)
-            })
-        })
-
+        Ext = data;
+        filteringExtension();
     })
 
 
 
 
-function loadExt(data) {
+function loadExt(data, index) {
     cardContainer.innerHTML +=
         `<div class="card">
             <div class="card-content-con">
@@ -34,8 +25,8 @@ function loadExt(data) {
                 </div>
             </div>
             <div class="controls">
-                <button onclick="removeSelf">Remove</button>
-                <div class="active-switch ${data.isActive ? 'active' : ''}" data-isActive=${data.isActive}>
+                <button class="remove-ext-button" data-index=${index}>Remove</button>
+                <div class="active-switch ${data.isActive ? 'active' : ''}" data-isActive=${data.isActive} data-index=${index}>
                         <span class="slider"></span>
                 </div>
             </div>
@@ -44,9 +35,18 @@ function loadExt(data) {
 
 
 function flipSwitch(e) {
-    e.target.classList.toggle('active');
+    const isActive = e.target.classList.toggle('active');
     e.target.toggleAttribute("data-isActive");
+    const index = e.target.getAttribute('data-index');
+    Ext[index].isActive = isActive;
+    filteringExtension();
 
+}
+
+function removeExt(e) {
+    const index = e.target.getAttribute('data-index');
+    Ext.splice(index, 1)
+    filteringExtension();
 }
 
 function toggleScheme() {
@@ -68,15 +68,52 @@ document.addEventListener("DOMContentLoaded", e => {
     const cScheme = localStorage.getItem('theme');
     document.documentElement.style.colorScheme = cScheme === "dark" ? "dark" : "light";
     filtering();
+
 });
 
 onhashchange = (h) => {
-    console.log(h);
     filtering();
+    filteringExtension()
 }
 
 // Todo: filter mechanism
 
+function filteringExtension() {
+    const hash = new URL(window.location.href).hash
+    cardContainer.innerHTML = "";
+
+    {
+        let index = 0;
+        for (d of Ext) {
+            if (hash === "#active") {
+                if (d.isActive)
+                    loadExt(d, index);
+            }
+            else if (hash === '#inactive') {
+                if (!d.isActive)
+                    loadExt(d, index);
+            }
+            else
+                loadExt(d, index);
+            index++;
+        }
+        const switches = document.querySelectorAll('.active-switch');
+        const removalButtons = document.querySelectorAll('.remove-ext-button');
+        removalButtons.forEach((rm) => {
+            rm.addEventListener("click", (e) => {   
+                removeExt(e);
+            });
+        })
+        switches.forEach((s) => {
+
+            s.addEventListener("click", (e) => {
+                flipSwitch(e)
+            });
+        })
+
+    }
+
+}
 
 
 function filtering() {
