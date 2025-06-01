@@ -41,10 +41,9 @@ header .container .light-dark button {
     border-radius: 0.3125rem;
 }
 
-header .container .light-dark button img{
+header .container .light-dark button img {
     width: 0.9375rem;
 }
-
 
 header .container .light-dark button img.dark {
     display: block;
@@ -86,13 +85,17 @@ main .sub-header > div > a {
     border-radius: 0.9375rem;
     text-decoration: none;
     transition: background-color 200ms ease-in-out;
-    color: light-dark(#000, #fff)
+    color: light-dark(#000, #fff);
 }
 
 main .sub-header > div > a:hover {
     background-color: orangered;
     color: white;
     cursor: pointer;
+}
+
+main .sub-header > div > a.active {
+    background-color: orangered;
 }
 
 main .card-container {

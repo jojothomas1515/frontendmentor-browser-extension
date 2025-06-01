@@ -1,4 +1,7 @@
 const cardContainer = document.querySelector('.card-container');
+const linkAll = document.querySelector("#filter-all");
+const linkActive = document.querySelector("#filter-active");
+const linkInactive = document.querySelector("#filter-inactive");
 
 fetch("./data.json")
     .then(res => res.json())
@@ -59,9 +62,26 @@ function toggleScheme() {
     dark.classList.toggle("active");
 }
 
+// Event Listeners
+
 document.addEventListener("DOMContentLoaded", e => {
     const cScheme = localStorage.getItem('theme');
     document.documentElement.style.colorScheme = cScheme === "dark" ? "dark" : "light";
+    filtering();
 });
 
+onhashchange = (h) => {
+    console.log(h);
+    filtering();
+}
+
 // Todo: filter mechanism
+
+
+
+function filtering() {
+    const hash = new URL(window.location.href).hash
+    hash === "" ? linkAll.classList.add("active") : linkAll.classList.remove("active");
+    hash === "#active" ? linkActive.classList.add("active") : linkActive.classList.remove("active");
+    hash === "#inactive" ? linkInactive.classList.add("active") : linkInactive.classList.remove("active");
+}
