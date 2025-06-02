@@ -16,6 +16,8 @@ body {
     color: light-dark(#000, #fff);
 }
 
+
+
 header .container {
     margin: 1.25rem auto;
     display: flex;
@@ -164,4 +166,19 @@ main .card-container .card .controls .active-switch.active {
 }
 main .card-container .card .controls .active-switch.active .slider {
     float: right;
+}
+
+
+
+@media screen and (max-width: 400px) {
+    body {
+        padding: 0 2%;
+        
+    }
+    main .sub-header {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap:1rem;
+    }
 }
