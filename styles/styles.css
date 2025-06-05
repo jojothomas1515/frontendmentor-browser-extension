@@ -104,6 +104,8 @@ main .card-container {
     display: flex;
     gap: 0.625rem;
     flex-wrap: wrap;
+  
+   
 }
 
 main .card-container .card {
@@ -113,10 +115,9 @@ main .card-container .card {
     flex-direction: column;
     justify-content: space-between;
     padding: 0.625rem;
-    max-width: 25rem;
     min-width: 18.75rem;
-    margin: 0 auto;
-    flex: 1 1;
+
+    flex: 1 1 0;
     gap: 1rem;
     box-shadow: 0.0625rem 0.0625rem 0.1875rem grey;
 }
@@ -170,7 +171,7 @@ main .card-container .card .controls .active-switch.active .slider {
 
 
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 400px) {
     body {
         padding: 0 2%;
         
